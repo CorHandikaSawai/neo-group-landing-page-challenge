@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Casino Landing Page</title>
+        <link rel="stylesheet" href="styles.css" />
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+        ></script>
+    </head>
+    <body>
+        <!-- Hero Slider -->
+        <section class="hero-slider" x-data="slider">
+            <div class="carousel">
+                <template x-for="(slide, index) in slides" :key="index">
+                    <div
+                        class="slide"
+                        x-show="currentSlide === index"
+                        :style="'background-image: url(' + slide + ')'"
+                    >
+                        <h1>3000€ + 100 Free Spins</h1>
+                        <p>No Casino e Casino ao vivo</p>
+                        <a
+                            href="https://leon211.casino/registration"
+                            class="cta"
+                            >REGISTE-SE</a
+                        >
+                    </div>
+                </template>
+            </div>
+            <button @click="currentSlide = (currentSlide + 1) % slides.length">
+                Next
+            </button>
+        </section>
+
+        <!-- 3-Step Registration Process -->
+        <section class="registration-steps">
+            <div
+                class="step"
+                x-data="{ visible: false }"
+                x-init="setTimeout(() => visible = true, 500)"
+                x-show="visible"
+            >
+                <h2>1. Registe-se</h2>
+                <p>
+                    Junte-se à família Leon, completando o nosso processo de
+                    registo rápido e fácil.
+                </p>
+            </div>
+
+            <div
+                class="step"
+                x-data="{ visible: false }"
+                x-init="setTimeout(() => visible = true, 1000)"
+                x-show="visible"
+            >
+                <h2>2. Deposite</h2>
+                <p>Processamentos rápidos e variados!</p>
+            </div>
+
+            <div
+                class="step"
+                x-data="{ visible: false }"
+                x-init="setTimeout(() => visible = true, 1500)"
+                x-show="visible"
+            >
+                <h2>3. Jogue</h2>
+                <p>A sua aventura pessoal na Leon começa aqui!</p>
+            </div>
+        </section>
+
+        <!-- Animated Cards Section -->
+        <section class="animated-cards">
+            <div
+                class="card"
+                x-data="{ hovered: false }"
+                @mouseenter="hovered = true"
+                @mouseleave="hovered = false"
+            >
+                <h3>Slots</h3>
+                <p>Mais de 4.500 jogos à sua escolha!</p>
+            </div>
+            <div
+                class="card"
+                x-data="{ hovered: false }"
+                @mouseenter="hovered = true"
+                @mouseleave="hovered = false"
+            >
+                <h3>Jogos ao vivo</h3>
+                <p>
+                    Jogue num excelente casino online com nossos dealers ao
+                    vivo!
+                </p>
+            </div>
+            <div
+                class="card"
+                x-data="{ hovered: false }"
+                @mouseenter="hovered = true"
+                @mouseleave="hovered = false"
+            >
+                <h3>Serviço de excelência</h3>
+                <p>Pagamentos rápidos, atendimento ao cliente 24h.</p>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Pronto para começar?</h2>
+            <a href="https://leon211.casino/registration" class="cta"
+                >REGISTE-SE AGORA</a
+            >
+        </section>
+    </body>
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('slider', () => ({
+                currentSlide: 0,
+                slides: [
+                    '/assets/Games/GatesOfOlympus/Background/Freegame_BG.png',
+                    '/assets/Games/SweetBonanza1000/Background/Freegame_BG_5000X1998.png',
+                    '/assets/Games/WolfGoldUltimate/Background/Freegame_BG_5000X1998.png',
+                ],
+                next() {
+                    this.currentSlide =
+                        (this.currentSlide + 1) % this.slides.length;
+                },
+                init() {
+                    setInterval(() => {
+                        this.next();
+                    }, 5000);
+                },
+            }));
+        });
+    </script>
+</html>
