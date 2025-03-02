@@ -62,10 +62,16 @@
             src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
         ></script>
     </head>
-    <body>
+    <body x-data="themeHandler()" :class="theme">
+        <button @click="toggleTheme" class="change-theme-btn">
+            <span
+                x-text="theme === 'dark-mode' ? 'Light Mode' : 'Dark Mode'"
+            ></span>
+        </button>
         <!-- Hero Slider -->
         <section class="hero-slider" x-data="slider">
             <div class="carousel">
+                <button @click="move('left')" class="move-left">&larr;</button>
                 <template x-for="(slide, index) in slides" :key="index">
                     <div
                         class="slide"
@@ -82,6 +88,9 @@
                         </a>
                     </div>
                 </template>
+                <button @click="move('right')" class="move-right">
+                    &rarr;
+                </button>
             </div>
         </section>
         <!-- 3-Step Registration Process -->
@@ -109,7 +118,6 @@
                         </p>
                     </div>
                 </div>
-
                 <!-- Progress Bar (Between Step 1 & 2) -->
                 <div class="step-line-wrapper">
                     <div
@@ -138,7 +146,6 @@
                         <p>Processamentos rápidos e variados!</p>
                     </div>
                 </div>
-
                 <!-- Progress Bar (Between Step 2 & 3) -->
                 <div class="step-line-wrapper">
                     <div
@@ -231,7 +238,7 @@
                     './assets/images/roulette2.jpg',
                     './assets/images/slot-machines.jpg',
                 ],
-                next() {
+                move(direction) {
                     // Remove active class from previous slide
                     document.querySelectorAll('.slide').forEach((el, index) => {
                         if (index === this.currentSlide) {
@@ -239,9 +246,16 @@
                         }
                     });
 
-                    // Move to next slide
-                    this.currentSlide =
-                        (this.currentSlide + 1) % this.slides.length;
+                    if (direction == 'right') {
+                        // Move to next slide
+                        this.currentSlide =
+                            (this.currentSlide + 1) % this.slides.length;
+                    } else {
+                        // Move to previous slide
+                        this.currentSlide =
+                            (this.currentSlide - 1 + this.slides.length) %
+                            this.slides.length;
+                    }
 
                     // Add active class to new slide
                     setTimeout(() => {
@@ -256,7 +270,7 @@
                 },
                 init() {
                     setInterval(() => {
-                        this.next();
+                        this.move('right');
                     }, 5000);
                 },
             }));
@@ -280,5 +294,16 @@
                     gif.src = './assets/images/Bison_idle.gif';
                 }, 1000);
             });
+
+        function themeHandler() {
+            return {
+                theme: localStorage.getItem('theme') || 'light-mode',
+                toggleTheme() {
+                    this.theme =
+                        this.theme === 'dark-mode' ? 'light-mode' : 'dark-mode';
+                    localStorage.setItem('theme', this.theme);
+                },
+            };
+        }
     </script>
 </html>

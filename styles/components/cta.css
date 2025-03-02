@@ -10,8 +10,8 @@
     margin-top: 8rem;
     text-align: center;
     padding: 3rem 0;
-    background: -o-linear-gradient(315deg, #111, #222);
-    background: linear-gradient(135deg, #111, #222);
+    /* background: -o-linear-gradient(315deg, #111, #222);
+    background: linear-gradient(135deg, #111, #222); */
     overflow: hidden;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -85,7 +85,13 @@
     transition: -webkit-transform 0.3s ease-in-out,
         -webkit-box-shadow 0.3s ease-in-out;
     -o-transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    -webkit-transition: -webkit-transform 0.3s ease-in-out,
+        -webkit-box-shadow 0.3s ease-in-out;
+    transition: -webkit-transform 0.3s ease-in-out,
+        -webkit-box-shadow 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out,
+        -webkit-transform 0.3s ease-in-out, -webkit-box-shadow 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out,
         -webkit-transform 0.3s ease-in-out, -webkit-box-shadow 0.3s ease-in-out;
     position: relative;
