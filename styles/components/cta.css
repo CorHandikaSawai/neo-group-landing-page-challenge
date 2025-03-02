@@ -1,6 +1,6 @@
 /* ✨ CTA Section */
 .cta-section {
-    margin-top: 10rem;
+    margin-top: 8rem;
     text-align: center;
     padding: 3rem 0;
     background: linear-gradient(135deg, #111, #222);
@@ -64,6 +64,9 @@
 /* 📱 Responsive Design */
 @media (max-width: 1024px) {
     /* ✅ Tablets */
+    .cta-section {
+        margin-top: 4rem;
+    }
     .cta-content img {
         width: 300px;
     }
@@ -78,6 +81,9 @@
 
 @media (max-width: 768px) {
     /* ✅ Mobile */
+    .cta-section {
+        margin-top: 2rem;
+    }
     .cta-content img {
         width: 250px;
     }
