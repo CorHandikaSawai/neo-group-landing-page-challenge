@@ -1,7 +1,7 @@
 /* 🔄 Hero Slider */
 .hero-slider {
     position: relative;
-    height: 45rem;
+    height: 25rem;
     overflow: hidden;
 }
 
@@ -72,9 +72,6 @@
 /* 📱 Responsive Design */
 @media (max-width: 1024px) {
     /* ✅ Tablets (iPads) */
-    .hero-slider {
-        height: 35rem; /* Smaller height */
-    }
 
     .slide h1 {
         font-size: 3rem;
@@ -91,11 +88,6 @@
 }
 
 @media (max-width: 768px) {
-    /* ✅ Mobile */
-    .hero-slider {
-        height: 25rem; /* Reduce height */
-    }
-
     .slide h1 {
         font-size: 2rem;
         margin-bottom: 0.8rem;

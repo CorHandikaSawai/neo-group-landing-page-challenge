@@ -5,10 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Leon</title>
         <link rel="stylesheet" href="./styles/main.css" />
-        <script
-            defer
-            src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
-        ></script>
+        <head>
+            <script
+                defer
+                src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"
+            ></script>
+            <script
+                defer
+                src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+            ></script>
+        </head>
     </head>
     <body>
         <!-- Hero Slider -->
@@ -119,15 +125,23 @@
                 </div>
             </div>
         </section>
-
-        <!-- Animated Cards Section -->
         <section class="animated-cards">
-            <div class="card">
+            <div
+                class="card"
+                x-data="{ visible: false }"
+                x-intersect="visible = true"
+                :class="{ 'show': visible }"
+            >
                 <h3>Slots</h3>
                 <p>Mais de 4.500 jogos à sua escolha!</p>
             </div>
 
-            <div class="card">
+            <div
+                class="card"
+                x-data="{ visible: false }"
+                x-intersect="visible = true"
+                :class="{ 'show': visible }"
+            >
                 <h3>Jogos ao vivo</h3>
                 <p>
                     Jogue num excelente casino online com nossos dealers ao
@@ -135,18 +149,33 @@
                 </p>
             </div>
 
-            <div class="card">
+            <div
+                class="card"
+                x-data="{ visible: false }"
+                x-intersect="visible = true"
+                :class="{ 'show': visible }"
+            >
                 <h3>Serviço de excelência</h3>
                 <p>Pagamentos rápidos, atendimento ao cliente 24h.</p>
             </div>
         </section>
         <!-- CTA Section -->
+        <!-- CTA Section -->
         <section class="cta-section">
             <div class="cta-content">
+                <img
+                    id="bisonGif"
+                    src="./assets/images/Bison_idle.gif"
+                    alt="Jogue"
+                />
                 <h2>🎰 Pronto para começar?</h2>
-                <a href="https://leon211.casino/registration" class="cta"
-                    >REGISTE-SE AGORA</a
+                <a
+                    href="https://leon211.casino/registration"
+                    class="cta"
+                    id="ctaButton"
                 >
+                    REGISTE-SE AGORA
+                </a>
             </div>
         </section>
     </body>
@@ -189,5 +218,24 @@
                 },
             }));
         });
+
+        document
+            .getElementById('ctaButton')
+            .addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent default link action
+                let gif = document.getElementById('bisonGif');
+
+                // Toggle between idle and animated GIF
+                if (gif.src.includes('Bison_idle.gif')) {
+                    gif.src = './assets/images/Bison_win.gif'; // Change to running GIF
+                } else {
+                    gif.src = './assets/images/Bison_idle.gif'; // Back to idle GIF
+                }
+
+                // Open the registration link after a short delay
+                setTimeout(() => {
+                    gif.src = './assets/images/Bison_idle.gif';
+                }, 1000);
+            });
     </script>
 </html>

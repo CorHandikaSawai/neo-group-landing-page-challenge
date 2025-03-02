@@ -1,58 +1,50 @@
 /* ✨ CTA Section */
 .cta-section {
-    margin-top: 8rem;
-    position: relative;
+    margin-top: 10rem;
     text-align: center;
-    padding: 4rem 2rem;
-    background: linear-gradient(
-        135deg,
-        #111,
-        #222
-    ); /* Dark gradient background */
+    padding: 3rem 0;
+    background: linear-gradient(135deg, #111, #222);
     overflow: hidden;
-}
-
-/* 🔥 Animated background glow */
-.cta-section::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: 50%;
-    width: 150%;
-    height: 300%;
-    background: radial-gradient(
-        circle,
-        rgba(255, 215, 0, 0.3) 0%,
-        transparent 70%
-    );
-    transform: translate(-50%, 0);
-    animation: pulseGlow 4s infinite alternate ease-in-out;
-    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /* 🏆 CTA Content */
 .cta-content {
     position: relative;
     z-index: 2;
-    max-width: 800px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem; /* Reduce gap between elements */
+    padding: 1rem;
+}
+
+/* 🦬 Bison GIF - Adjust for Emphasis */
+.cta-content img {
+    width: 350px; /* Slightly larger */
+    max-width: 90%; /* Prevent overflow */
+    height: auto;
+    transition: transform 0.3s ease-in-out;
 }
 
 /* 🎰 CTA Title */
 .cta-content h2 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 800;
-    color: #ffd700; /* Gold */
+    color: #ffd700;
     text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem; /* Reduce bottom spacing */
 }
 
-/* 💰 CTA Button - Make it glowing and clickable */
+/* 💰 CTA Button */
 .cta {
     display: inline-block;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    padding: 1rem 2.5rem;
+    padding: 0.75rem 2rem;
     background: linear-gradient(45deg, #ffd700, #ffb800);
     color: #111;
     text-decoration: none;
@@ -60,56 +52,40 @@
     box-shadow: 0 4px 15px rgba(255, 215, 0, 0.6);
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     position: relative;
+    margin-top: 0.5rem; /* Bring button closer */
 }
 
-/* 🌟 Button Glow Animation */
-.cta::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    background: radial-gradient(circle, rgba(255, 215, 0, 0.4), transparent);
-    border-radius: 0.75rem;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-
-/* 🎆 Hover effect for CTA */
+/* 🌟 Hover Effect */
 .cta:hover {
     transform: scale(1.1);
     box-shadow: 0 6px 20px rgba(255, 215, 0, 0.9);
 }
 
-.cta:hover::before {
-    opacity: 1;
-}
-
-/* 📱 ✅ Responsive Design - Tablets (iPads) */
+/* 📱 Responsive Design */
 @media (max-width: 1024px) {
-    .cta-content h2 {
-        font-size: 2rem;
+    /* ✅ Tablets */
+    .cta-content img {
+        width: 300px;
     }
-
-    .cta {
-        font-size: 1.5rem;
-        padding: 0.8rem 2rem;
-    }
-}
-
-/* 📱 ✅ Responsive Design - Mobile */
-@media (max-width: 768px) {
-    .cta-section {
-        padding: 3rem 1.5rem;
-    }
-
     .cta-content h2 {
         font-size: 1.8rem;
     }
-
     .cta {
         font-size: 1.3rem;
-        padding: 0.7rem 1.8rem;
+        padding: 0.6rem 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* ✅ Mobile */
+    .cta-content img {
+        width: 250px;
+    }
+    .cta-content h2 {
+        font-size: 1.6rem;
+    }
+    .cta {
+        font-size: 1.2rem;
+        padding: 0.5rem 1.2rem;
     }
 }

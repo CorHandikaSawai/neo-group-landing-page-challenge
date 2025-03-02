@@ -2,55 +2,63 @@
 .animated-cards {
     display: flex;
     justify-content: center;
-    gap: 5rem;
-    margin-top: 8rem;
+    flex-wrap: wrap;
+    gap: 3rem;
+    margin-top: 10rem;
+    opacity: 1;
 }
 
 /* 🃏 Card Base */
 .card {
-    width: 16rem; /* Slightly bigger cards */
-    height: 20rem; /* Adjust height to fit background */
+    width: 18rem;
+    height: 22rem;
     padding: 2rem;
     border-radius: 1rem;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    position: relative;
-    overflow: hidden;
     text-align: center;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    /* Background settings */
     background-size: cover;
     background-position: center;
+    transform: translateY(50px);
+    opacity: 0;
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+    visibility: hidden;
+}
+
+/* ✅ Card Becomes Visible */
+.card.show {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
 }
 
 /* 🃏 Specific Backgrounds for Each Card */
 .card:nth-child(1) {
-    background-image: url('./assets/images/slot-machines.webp');
+    background-image: url('../../assets/images/slot-machines.webp');
 }
 
 .card:nth-child(2) {
-    background-image: url('./assets/images/live-exp.webp');
+    background-image: url('../../assets/images/live-exp.webp');
 }
 
 .card:nth-child(3) {
-    background-image: url('/assets/images/excelent-service.webp');
+    background-image: url('../../assets/images/excelent-service.webp');
 }
 
-/* ✨ Card Glow Effect */
+/* ✨ Hover Effect */
 .card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8); /* Golden glow */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
 }
 
 /* 🏆 Title Styling */
 .card h3 {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #ffd700; /* Gold */
+    color: #ffd700;
     text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
     position: relative;
     z-index: 2;
@@ -65,7 +73,7 @@
     z-index: 2;
 }
 
-/* 🔥 Dark overlay to make text stand out */
+/* 🔥 Dark Overlay */
 .card::before {
     content: '';
     position: absolute;
@@ -73,44 +81,36 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+    background: rgba(0, 0, 0, 0.6);
     z-index: 1;
 }
 
-/* 📱 ✅ Responsive Design - Tablets (iPads) */
+/* 📱 Responsive Design */
 @media (max-width: 1024px) {
     .animated-cards {
-        gap: 0.25rem; /* Less gap for tablets */
+        margin-top: 0.5rem;
+        gap: 2rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
     }
+
     .card {
-        margin-left: 1rem;
-        margin-right: 1rem;
-        height: 18rem;
-    }
-    .card h3 {
-        font-size: 1.5rem;
-    }
-    .card p {
-        font-size: 0.9rem;
+        width: 16rem;
+        height: 20rem;
     }
 }
 
-/* 📱 ✅ Responsive Design - Mobile */
 @media (max-width: 768px) {
     .animated-cards {
-        flex-direction: column; /* Stack vertically */
-        align-items: center; /* Center align */
-        gap: 2rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
     }
+
     .card {
-        /* Make it take most of the screen width */
+        width: 80%;
         height: auto;
-        padding: 2rem;
-    }
-    .card h3 {
-        font-size: 1.6rem;
-    }
-    .card p {
-        font-size: 1rem;
+        padding: 1.5rem;
     }
 }
