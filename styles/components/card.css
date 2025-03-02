@@ -78,13 +78,55 @@
     background-image: url('../../assets/images/excelent-service.webp');
 }
 
+/* ✨ Card Container */
+.card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Default: Hide Text */
+.card h3,
+.card p {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px); /* Subtle slide-up effect */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* 🔥 Dark Overlay (Hidden by Default) */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0); /* Initially transparent */
+    backdrop-filter: blur(0px); /* No blur initially */
+    z-index: 1;
+    transition: background 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
+}
+
 /* ✨ Hover Effect */
 .card:hover {
-    -webkit-transform: translateY(-10px);
-    -ms-transform: translateY(-10px);
     transform: translateY(-10px);
-    -webkit-box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+}
+
+/* Show Overlay on Hover */
+.card:hover::before {
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay appears */
+    backdrop-filter: blur(5px); /* Soft blur effect */
+}
+
+/* Show Text on Hover */
+.card:hover h3,
+.card:hover p {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); /* Slide back to original position */
 }
 
 /* 🏆 Title Styling */
@@ -104,18 +146,6 @@
     opacity: 0.9;
     position: relative;
     z-index: 2;
-}
-
-/* 🔥 Dark Overlay */
-.card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 1;
 }
 
 /* 📱 Responsive Design */
