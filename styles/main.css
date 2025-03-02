@@ -14,24 +14,21 @@
     --base-font-size: 16px;
 }
 
+/* Dark Mode by default*/
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     text-align: center;
     transition: background var(--transition), color var(--transition);
+    background: var(--dark-bg);
+    color: var(--dark-text);
 }
 
 /* Light Mode */
 .light-mode {
     background: var(--light-bg);
     color: var(--light-text);
-}
-
-/* Dark Mode */
-.dark-mode {
-    background: var(--dark-bg);
-    color: var(--dark-text);
 }
 
 .change-theme-btn {
