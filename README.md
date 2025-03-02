@@ -4,7 +4,7 @@
 ```
 LEON-CASINO/
 │── assets/
-│ ├── images/ # All images and icons
+│ ├── images/* # All images and icons
 │── styles/
 │ ├── components/ # Individual CSS files for different sections
 │ │ ├── card.css
