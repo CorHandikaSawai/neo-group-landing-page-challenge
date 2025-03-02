@@ -7,7 +7,7 @@
         <link
             rel="icon"
             type="image/png"
-            href="./assets/images/logo/icon-chip.jpg"
+            href="./assets/images/logo/icon-chip.png"
         />
         <!-- SEO Meta Tags -->
         <meta
@@ -31,21 +31,20 @@
             defer
             src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
         ></script>
+        <script defer src="./js/script.js"></script>
     </head>
     <body x-data="themeHandler()" :class="theme">
         <div class="coin-container">
             <template x-for="i in 7">
                 <img
-                    :src="`./assets/images/${theme === 'dark-mode' ? 'coins' : 'chips'}/${i}.png`"
+                    :src="`./assets/images/${theme === '' ? 'coins' : 'chips'}/${i}.png`"
                     class="floating-item"
                     :class="'item-' + i"
                 />
             </template>
         </div>
         <button @click="toggleTheme" class="change-theme-btn">
-            <span
-                x-text="theme === 'dark-mode' ? 'Light Mode' : 'Dark Mode'"
-            ></span>
+            <span x-text="theme === '' ? 'Light Mode' : 'Dark Mode'"></span>
         </button>
         <!-- Hero Slider -->
         <section class="hero-slider" x-data="slider">
@@ -55,18 +54,23 @@
                     <div
                         class="slide"
                         :class="{ 'active': currentSlide === index }"
-                        :style="'background-image: url(' + slide + ')'"
+                        :style="index === 0 ? `background-image: url(${slide.image})` : ''"
+                        x-init="$nextTick(() => { 
+                            if (index !== 0) { 
+                                $el.style.backgroundImage = `url(${slide.image})`; 
+                            } 
+                        })"
                     >
-                        <h1>3000€ + 100 Rodadas Grátis na</h1>
-                        <p>No Casino e Casino ao vivo</p>
+                        <h1 x-text="slide.title"></h1>
+                        <p x-text="slide.description"></p>
                         <a
-                            href="https://leon211.casino/registration"
+                            :href="slide.ctaLink"
                             class="cta"
-                        >
-                            REGISTE-SE
-                        </a>
+                            x-text="slide.ctaText"
+                        ></a>
                     </div>
                 </template>
+
                 <button @click="move('right')" class="move-right">
                     &rarr;
                 </button>
@@ -209,47 +213,67 @@
         </section>
     </body>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            //updateFloatingCoins(); // Run on page load
-        });
-
         function themeHandler() {
             return {
-                theme: localStorage.getItem('theme') || 'light-mode',
+                theme: localStorage.getItem('theme') || '',
                 toggleTheme() {
                     this.theme =
-                        this.theme === 'dark-mode' ? 'light-mode' : 'dark-mode';
+                        this.theme === 'light-mode' ? '' : 'light-mode';
                     localStorage.setItem('theme', this.theme);
-                    updateFloatingCoins(); // Call function to update images when switching themes
                 },
             };
         }
-
         document.addEventListener('alpine:init', () => {
             Alpine.data('slider', () => ({
                 currentSlide: 0,
                 slides: [
-                    './assets/images/sliders/roulette.jpg',
-                    './assets/images/sliders/slot-machines.jpg',
-                    './assets/images/sliders/roulette2.jpg',
+                    {
+                        image: './assets/images/sliders/roulette2.webp',
+                        title: '3000€',
+                        description:
+                            'No Casino e Casino ao vivo + 100 Rodadas Grátis na',
+                        ctaText: 'REGISTE-SE',
+                        ctaLink: 'https://leon211.casino/registration',
+                    },
+                    {
+                        image: './assets/images/sliders/slot-machines.jpg',
+                        title: 'Experimente os Melhores Slots',
+                        description: 'Mais de 4.500 jogos para escolher!',
+                        ctaText: 'Descubra Agora',
+                        ctaLink: 'https://leon211.casino/slots',
+                    },
+                    {
+                        image: './assets/images/sliders/roulette.jpg',
+                        title: 'Jogue Ao Vivo com Dealers Reais',
+                        description: 'Experimente a emoção do cassino ao vivo!',
+                        ctaText: 'Jogar Agora',
+                        ctaLink: 'https://leon211.casino/live-casino',
+                    },
                 ],
                 move(direction) {
                     // Remove active class from previous slide
                     document.querySelectorAll('.slide').forEach((el, index) => {
-                        if (index === this.currentSlide) {
+                        if (index === this.currentSlide)
                             el.classList.remove('active');
-                        }
                     });
 
-                    if (direction == 'right') {
-                        // Move to next slide
+                    if (direction === 'right') {
                         this.currentSlide =
                             (this.currentSlide + 1) % this.slides.length;
                     } else {
-                        // Move to previous slide
                         this.currentSlide =
                             (this.currentSlide - 1 + this.slides.length) %
                             this.slides.length;
+                    }
+
+                    // Lazy load next slide image
+                    let nextSlide = document.querySelector(
+                        `.slide:nth-child(${this.currentSlide + 1})`
+                    );
+                    if (nextSlide && !nextSlide.style.backgroundImage) {
+                        nextSlide.style.backgroundImage = `url(${
+                            this.slides[this.currentSlide].image
+                        })`;
                     }
 
                     // Add active class to new slide
@@ -257,19 +281,25 @@
                         document
                             .querySelectorAll('.slide')
                             .forEach((el, index) => {
-                                if (index === this.currentSlide) {
+                                if (index === this.currentSlide)
                                     el.classList.add('active');
-                                }
                             });
                     }, 100);
                 },
                 init() {
                     setInterval(() => {
-                        this.move('right');
+                        this.move('right'); // Keeps moving to the next slide every 5s
                     }, 5000);
                 },
             }));
         });
+
+        // 🌟 Preload Bison GIFs
+        const bisonIdle = new Image();
+        const bisonWin = new Image();
+
+        bisonIdle.src = './assets/images/bisons/Bison_idle.gif';
+        bisonWin.src = './assets/images/bisons/Bison_win.gif';
 
         document
             .getElementById('ctaButton')
@@ -279,26 +309,15 @@
 
                 // Toggle between idle and animated GIF
                 if (gif.src.includes('Bison_idle.gif')) {
-                    gif.src = './assets/images/bisons/Bison_win.gif'; // Change to running GIF
+                    gif.src = bisonWin.src; // Use preloaded GIF
                 } else {
-                    gif.src = './assets/images/bisons/Bison_idle.gif'; // Back to idle GIF
+                    gif.src = bisonIdle.src; // Use preloaded GIF
                 }
 
-                // Open the registration link after a short delay
+                // Reset GIF after delay
                 setTimeout(() => {
-                    gif.src = './assets/images/bisons/Bison_idle.gif';
+                    gif.src = bisonIdle.src;
                 }, 1000);
             });
-
-        function themeHandler() {
-            return {
-                theme: localStorage.getItem('theme') || 'light-mode',
-                toggleTheme() {
-                    this.theme =
-                        this.theme === 'dark-mode' ? 'light-mode' : 'dark-mode';
-                    localStorage.setItem('theme', this.theme);
-                },
-            };
-        }
     </script>
 </html>
