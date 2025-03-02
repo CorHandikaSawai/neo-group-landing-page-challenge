@@ -67,15 +67,15 @@
 
 /* 🃏 Specific Backgrounds for Each Card */
 .card:nth-child(1) {
-    background-image: url('../../assets/images/slot-machines.webp');
+    background-image: url('../../assets/images/cards/slot-machines.webp');
 }
 
 .card:nth-child(2) {
-    background-image: url('../../assets/images/live-exp.webp');
+    background-image: url('../../assets/images/cards/live-exp.webp');
 }
 
 .card:nth-child(3) {
-    background-image: url('../../assets/images/excelent-service.webp');
+    background-image: url('../../assets/images/cards/excelent-service.webp');
 }
 
 /* ✨ Card Container */
