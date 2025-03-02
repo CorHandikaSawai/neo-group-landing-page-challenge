@@ -1,59 +1,110 @@
 /* 🔄 Registration Steps Layout */
 .registration-steps {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    gap: 2rem;
-    margin: 3rem auto;
     width: 80%;
+    margin: 4rem auto;
+    position: relative;
 }
 
 /* 🔄 Step Container */
+.step-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 2rem;
+}
+
+/* 🔄 Step Base */
 .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     opacity: 0;
     transform: translateY(50px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    max-width: 300px;
-    cursor: pointer;
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    max-width: 280px; /* Slightly smaller to fit better on iPads */
+    position: relative;
 }
 
-/* 🟡 Animate when visible */
+/* 🟡 Ensure it becomes visible */
 .step.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* 🌟 Glowing Hover Effect */
-.step:hover {
-    transform: scale(1.05);
+/* 🏆 Step Number */
+.step-circle {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #ffd700, #ffb800);
+    color: #111;
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+}
+
+/* 🔄 Progress Bar Wrapper */
+.step-line-wrapper {
+    flex-grow: 1;
+    height: 5px;
+    background: rgba(255, 215, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Aligns to the left */
+    position: relative;
+    overflow: hidden;
+}
+
+/* 🔄 Progress Line */
+.step-line {
+    width: 0%;
+    height: 5px;
+    background: linear-gradient(to right, #ffd700, #ffb800);
+    transform-origin: left; /* 🛠 Ensures it expands from left to right */
+    transition: width 1.5s ease-in-out;
+}
+
+/* 🚀 Animate line filling */
+.step-line.loaded {
+    width: 100%; /* Expands fully from left to right */
 }
 
 /* 🖼️ Step Image */
 .step-image {
     border-radius: 50%;
     overflow: hidden;
-    width: 220px;
-    height: 220px;
+    width: 180px; /* Slightly smaller for better scaling */
+    height: 180px;
     margin: 0 auto 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
-    transition: box-shadow 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
 }
+
+/* 🖼️ Step Image */
 .step-image img {
     width: 100%;
 }
 
 /* 🌟 Image Glow Effect */
 .step-image:hover {
-    box-shadow: 0 0 25px rgba(255, 215, 0, 1);
+    transform: scale(1.05);
 }
 
 /* ✨ Step Titles */
 .step h2 {
-    font-size: 1.8rem;
+    font-size: 1.6rem; /* Slightly smaller for iPads */
     font-weight: bold;
     background: linear-gradient(90deg, #ffd700, #ffa500);
     -webkit-background-clip: text;
@@ -63,8 +114,65 @@
 
 /* 📄 Step Description */
 .step p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: rgba(255, 255, 200, 0.9);
     font-style: italic;
     text-shadow: 1px 1px 3px rgba(255, 215, 0, 0.3);
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 1024px) {
+    /* ✅ TABLET (iPads) - Keep horizontal but adjust spacing */
+    .step-container {
+        gap: 1rem; /* Less gap between steps */
+        align-items: start;
+    }
+    .step {
+        max-width: 250px; /* Adjust step size */
+    }
+    .step-image {
+        width: 160px;
+        height: 160px;
+    }
+    .step-line {
+        height: 4px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* ✅ MOBILE - Switch to vertical layout */
+    .step-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* 🔄 Change Line to Vertical for Mobile */
+    .step-line-wrapper {
+        width: 5px; /* Make the line vertical */
+        height: 50px;
+        margin: 10px 0;
+    }
+
+    /* 🔄 Expand Line Downwards for Mobile */
+    .step-line {
+        width: 5px;
+        height: 0%;
+        background: linear-gradient(to bottom, #ffd700, #ffb800);
+        transform-origin: top;
+        transition: height 1.5s ease-in-out;
+    }
+
+    .step-line.loaded {
+        height: 100%; /* Expands from top to bottom */
+    }
+
+    .step h2 {
+        font-size: 1.4rem; /* Adjusted font size for mobile */
+    }
+
+    .step p {
+        font-size: 1rem;
+    }
 }

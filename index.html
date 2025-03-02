@@ -31,56 +31,92 @@
                     </div>
                 </template>
             </div>
-            <button @click="next()">Next</button>
         </section>
         <!-- 3-Step Registration Process -->
         <section class="registration-steps">
-            <div
-                class="step"
-                x-data="{ visible: false }"
-                x-init="setTimeout(() => visible = true, 500)"
-                x-bind:class="{ 'visible': visible }"
-            >
-                <div class="step-image">
-                    <img
-                        src="./assets/images/register2.webp"
-                        alt="Registe-se"
-                    />
+            <div class="step-container">
+                <!-- Step 1 -->
+                <div
+                    class="step"
+                    x-data="{ visible: false }"
+                    x-init="setTimeout(() => visible = true, 500)"
+                    x-bind:class="{ 'visible': visible }"
+                >
+                    <div class="step-circle"><span>1</span></div>
+                    <div class="step-content">
+                        <div class="step-image">
+                            <img
+                                src="./assets/images/register2.webp"
+                                alt="Registe-se"
+                            />
+                        </div>
+                        <h2>Registe-se</h2>
+                        <p>
+                            Junte-se à família Leon, completando o nosso
+                            processo de registo rápido e fácil.
+                        </p>
+                    </div>
                 </div>
-                <h2>1. Registe-se</h2>
-                <p>
-                    Junte-se à família Leon, completando o nosso processo de
-                    registo rápido e fácil.
-                </p>
-            </div>
 
-            <div
-                class="step"
-                x-data="{ visible: false }"
-                x-init="setTimeout(() => visible = true, 1000)"
-                x-bind:class="{ 'visible': visible }"
-            >
-                <div class="step-image">
-                    <img
-                        src="./assets/images/secure-deposite.webp"
-                        alt="Deposite"
-                    />
+                <!-- Progress Bar (Between Step 1 & 2) -->
+                <div class="step-line-wrapper">
+                    <div
+                        class="step-line"
+                        x-data="{ loaded: false }"
+                        x-init="setTimeout(() => loaded = true, 1000)"
+                        x-bind:class="{ 'loaded': loaded }"
+                    ></div>
                 </div>
-                <h2>2. Deposite</h2>
-                <p>Processamentos rápidos e variados!</p>
-            </div>
 
-            <div
-                class="step"
-                x-data="{ visible: false }"
-                x-init="setTimeout(() => visible = true, 1500)"
-                x-bind:class="{ 'visible': visible }"
-            >
-                <div class="step-image">
-                    <img src="./assets/images/step-3-jogue.webp" alt="Jogue" />
+                <!-- Step 2 -->
+                <div
+                    class="step"
+                    x-data="{ visible: false }"
+                    x-init="setTimeout(() => visible = true, 1500)"
+                    x-bind:class="{ 'visible': visible }"
+                >
+                    <div class="step-circle"><span>2</span></div>
+                    <div class="step-content">
+                        <div class="step-image">
+                            <img
+                                src="./assets/images/secure-deposite.webp"
+                                alt="Deposite"
+                            />
+                        </div>
+                        <h2>Deposite</h2>
+                        <p>Processamentos rápidos e variados!</p>
+                    </div>
                 </div>
-                <h2>3. Jogue</h2>
-                <p>A sua aventura pessoal na Leon começa aqui!</p>
+
+                <!-- Progress Bar (Between Step 2 & 3) -->
+                <div class="step-line-wrapper">
+                    <div
+                        class="step-line"
+                        x-data="{ loaded: false }"
+                        x-init="setTimeout(() => loaded = true, 2000)"
+                        x-bind:class="{ 'loaded': loaded }"
+                    ></div>
+                </div>
+
+                <!-- Step 3 -->
+                <div
+                    class="step"
+                    x-data="{ visible: false }"
+                    x-init="setTimeout(() => visible = true, 2500)"
+                    x-bind:class="{ 'visible': visible }"
+                >
+                    <div class="step-circle"><span>3</span></div>
+                    <div class="step-content">
+                        <div class="step-image">
+                            <img
+                                src="./assets/images/step-3-jogue.webp"
+                                alt="Jogue"
+                            />
+                        </div>
+                        <h2>Jogue</h2>
+                        <p>A sua aventura pessoal na Leon começa aqui!</p>
+                    </div>
+                </div>
             </div>
         </section>
 
