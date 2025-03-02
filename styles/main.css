@@ -50,3 +50,58 @@ body {
 .change-theme-btn:hover {
     background: darkgray;
 }
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.floating-item {
+    position: fixed;
+    width: 50px; /* Adjust size */
+    opacity: 0.4; /* Reduce distraction */
+    z-index: -1; /* Keep behind content */
+    animation: float 5s ease-in-out infinite;
+}
+
+/* Manually positioning 7 coins */
+.item-1 {
+    top: 10%;
+    left: 15%;
+    animation-duration: 4s;
+}
+.item-2 {
+    top: 30%;
+    left: 40%;
+    animation-duration: 5s;
+}
+.item-3 {
+    top: 50%;
+    left: 70%;
+    animation-duration: 6s;
+}
+.item-4 {
+    top: 70%;
+    left: 20%;
+    animation-duration: 4.5s;
+}
+.item-5 {
+    top: 20%;
+    left: 80%;
+    animation-duration: 5.5s;
+}
+.item-6 {
+    top: 60%;
+    left: 10%;
+    animation-duration: 4.8s;
+}
+.item-7 {
+    top: 80%;
+    left: 50%;
+    animation-duration: 5.2s;
+}

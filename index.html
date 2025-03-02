@@ -7,7 +7,7 @@
         <link
             rel="icon"
             type="image/png"
-            href="./assets/images/icon-chip.png"
+            href="./assets/images/logo/icon-chip.jpg"
         />
         <!-- SEO Meta Tags -->
         <meta
@@ -19,36 +19,6 @@
             content="casino online, slots, apostas, Leon Casino, roleta, blackjack"
         />
         <meta name="robots" content="index, follow" />
-        <!-- Facebook Open Graph -->
-        <meta
-            property="og:title"
-            content="Leon Casino - 3000€ + 100 Rodadas Grátis!"
-        />
-        <meta
-            property="og:description"
-            content="Registre-se e jogue com bônus incríveis no melhor cassino online!"
-        />
-        <meta
-            property="og:image"
-            content="https://leoncasino.com/assets/images/og-image.jpg"
-        />
-        <meta property="og:url" content="https://leon211.casino/" />
-        <meta property="og:type" content="website" />
-
-        <!-- Twitter Card -->
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-            name="twitter:title"
-            content="Leon Casino - 3000€ + 100 Rodadas Grátis!"
-        />
-        <meta
-            name="twitter:description"
-            content="Registre-se agora e aproveite nosso bônus exclusivo!"
-        />
-        <meta
-            name="twitter:image"
-            content="https://leoncasino.com/assets/images/twitter-card.jpg"
-        />
 
         <!-- Styles -->
         <link rel="stylesheet" href="./styles/main.css" />
@@ -63,6 +33,15 @@
         ></script>
     </head>
     <body x-data="themeHandler()" :class="theme">
+        <div class="coin-container">
+            <template x-for="i in 7">
+                <img
+                    :src="`./assets/images/${theme === 'dark-mode' ? 'coins' : 'chips'}/${i}.png`"
+                    class="floating-item"
+                    :class="'item-' + i"
+                />
+            </template>
+        </div>
         <button @click="toggleTheme" class="change-theme-btn">
             <span
                 x-text="theme === 'dark-mode' ? 'Light Mode' : 'Dark Mode'"
@@ -107,7 +86,7 @@
                     <div class="step-content">
                         <div class="step-image">
                             <img
-                                src="./assets/images/register2.webp"
+                                src="./assets/images/steps/register2.webp"
                                 alt="Registe-se"
                             />
                         </div>
@@ -138,7 +117,7 @@
                     <div class="step-content">
                         <div class="step-image">
                             <img
-                                src="./assets/images/secure-deposite.webp"
+                                src="./assets/images/steps/secure-deposite.webp"
                                 alt="Deposite"
                             />
                         </div>
@@ -166,7 +145,7 @@
                     <div class="step-content">
                         <div class="step-image">
                             <img
-                                src="./assets/images/step-3-jogue.webp"
+                                src="./assets/images/steps/step-3-jogue.webp"
                                 alt="Jogue"
                             />
                         </div>
@@ -215,7 +194,7 @@
             <div class="cta-content">
                 <img
                     id="bisonGif"
-                    src="./assets/images/Bison_idle.gif"
+                    src="./assets/images/bisons/Bison_idle.gif"
                     alt="Jogue"
                 />
                 <h2>🎰 Pronto para começar?</h2>
@@ -230,13 +209,29 @@
         </section>
     </body>
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            //updateFloatingCoins(); // Run on page load
+        });
+
+        function themeHandler() {
+            return {
+                theme: localStorage.getItem('theme') || 'light-mode',
+                toggleTheme() {
+                    this.theme =
+                        this.theme === 'dark-mode' ? 'light-mode' : 'dark-mode';
+                    localStorage.setItem('theme', this.theme);
+                    updateFloatingCoins(); // Call function to update images when switching themes
+                },
+            };
+        }
+
         document.addEventListener('alpine:init', () => {
             Alpine.data('slider', () => ({
                 currentSlide: 0,
                 slides: [
-                    './assets/images/roulette.jpg',
-                    './assets/images/roulette2.jpg',
-                    './assets/images/slot-machines.jpg',
+                    './assets/images/sliders/roulette.jpg',
+                    './assets/images/sliders/slot-machines.jpg',
+                    './assets/images/sliders/roulette2.jpg',
                 ],
                 move(direction) {
                     // Remove active class from previous slide
