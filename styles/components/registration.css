@@ -1,7 +1,20 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 /* 🔄 Registration Steps Layout */
 .registration-steps {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     width: 80%;
     margin: 4rem auto;
@@ -10,8 +23,14 @@
 
 /* 🔄 Step Container */
 .step-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
     width: 100%;
     gap: 2rem;
@@ -19,13 +38,27 @@
 
 /* 🔄 Step Base */
 .step {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     text-align: center;
     opacity: 0;
+    -webkit-transform: translateY(50px);
+    -ms-transform: translateY(50px);
     transform: translateY(50px);
+    -webkit-transition: opacity 1s ease-out, -webkit-transform 1s ease-out;
+    transition: opacity 1s ease-out, -webkit-transform 1s ease-out;
+    -o-transition: opacity 1s ease-out, transform 1s ease-out;
     transition: opacity 1s ease-out, transform 1s ease-out;
+    transition: opacity 1s ease-out, transform 1s ease-out,
+        -webkit-transform 1s ease-out;
     max-width: 280px; /* Slightly smaller to fit better on iPads */
     position: relative;
 }
@@ -33,6 +66,8 @@
 /* 🟡 Ensure it becomes visible */
 .step.visible {
     opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
     transform: translateY(0);
 }
 
@@ -40,25 +75,41 @@
 .step-circle {
     width: 60px;
     height: 60px;
+    background: -o-linear-gradient(45deg, #ffd700, #ffb800);
     background: linear-gradient(45deg, #ffd700, #ffb800);
     color: #111;
     font-size: 1.5rem;
     font-weight: bold;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     border-radius: 50%;
     margin-bottom: 1rem;
+    -webkit-box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
 }
 
 /* 🔄 Progress Bar Wrapper */
 .step-line-wrapper {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
     flex-grow: 1;
     height: 5px;
     background: rgba(255, 215, 0, 0.2);
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
     justify-content: flex-start; /* Aligns to the left */
     position: relative;
     overflow: hidden;
@@ -68,8 +119,20 @@
 .step-line {
     width: 0%;
     height: 5px;
+    background: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        from(#ffd700),
+        to(#ffb800)
+    );
+    background: -o-linear-gradient(left, #ffd700, #ffb800);
     background: linear-gradient(to right, #ffd700, #ffb800);
+    -webkit-transform-origin: left;
+    -ms-transform-origin: left;
     transform-origin: left; /* 🛠 Ensures it expands from left to right */
+    -webkit-transition: width 1.5s ease-in-out;
+    -o-transition: width 1.5s ease-in-out;
     transition: width 1.5s ease-in-out;
 }
 
@@ -85,11 +148,22 @@
     width: 180px; /* Slightly smaller for better scaling */
     height: 180px;
     margin: 0 auto 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    -webkit-transition: -webkit-transform 0.3s ease-in-out;
+    transition: -webkit-transform 0.3s ease-in-out;
+    -o-transition: transform 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
 }
 
 /* 🖼️ Step Image */
@@ -99,6 +173,8 @@
 
 /* 🌟 Image Glow Effect */
 .step-image:hover {
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
     transform: scale(1.05);
 }
 
@@ -106,6 +182,14 @@
 .step h2 {
     font-size: 1.6rem; /* Slightly smaller for iPads */
     font-weight: bold;
+    background: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        from(#ffd700),
+        to(#ffa500)
+    );
+    background: -o-linear-gradient(left, #ffd700, #ffa500);
     background: linear-gradient(90deg, #ffd700, #ffa500);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -127,6 +211,8 @@
     /* ✅ TABLET (iPads) - Keep horizontal but adjust spacing */
     .step-container {
         gap: 1rem; /* Less gap between steps */
+        -webkit-box-align: start;
+        -ms-flex-align: start;
         align-items: start;
     }
     .step {
@@ -144,7 +230,12 @@
 @media (max-width: 768px) {
     /* ✅ MOBILE - Switch to vertical layout */
     .step-container {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
     }
 
@@ -159,8 +250,20 @@
     .step-line {
         width: 5px;
         height: 0%;
+        background: -webkit-gradient(
+            linear,
+            left top,
+            left bottom,
+            from(#ffd700),
+            to(#ffb800)
+        );
+        background: -o-linear-gradient(top, #ffd700, #ffb800);
         background: linear-gradient(to bottom, #ffd700, #ffb800);
+        -webkit-transform-origin: top;
+        -ms-transform-origin: top;
         transform-origin: top;
+        -webkit-transition: height 1.5s ease-in-out;
+        -o-transition: height 1.5s ease-in-out;
         transition: height 1.5s ease-in-out;
     }
 

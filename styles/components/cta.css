@@ -1,13 +1,30 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 /* ✨ CTA Section */
 .cta-section {
     margin-top: 8rem;
     text-align: center;
     padding: 3rem 0;
+    background: -o-linear-gradient(315deg, #111, #222);
     background: linear-gradient(135deg, #111, #222);
     overflow: hidden;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
 }
 
@@ -15,8 +32,15 @@
 .cta-content {
     position: relative;
     z-index: 2;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     gap: 1rem; /* Reduce gap between elements */
     padding: 1rem;
@@ -27,7 +51,11 @@
     width: 350px; /* Slightly larger */
     max-width: 90%; /* Prevent overflow */
     height: auto;
+    -webkit-transition: -webkit-transform 0.3s ease-in-out;
+    transition: -webkit-transform 0.3s ease-in-out;
+    -o-transition: transform 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
 }
 
 /* 🎰 CTA Title */
@@ -45,19 +73,31 @@
     font-size: 1.5rem;
     font-weight: 700;
     padding: 0.75rem 2rem;
+    background: -o-linear-gradient(45deg, #ffd700, #ffb800);
     background: linear-gradient(45deg, #ffd700, #ffb800);
     color: #111;
     text-decoration: none;
     border-radius: 0.5rem;
+    -webkit-box-shadow: 0 4px 15px rgba(255, 215, 0, 0.6);
     box-shadow: 0 4px 15px rgba(255, 215, 0, 0.6);
+    -webkit-transition: -webkit-transform 0.3s ease-in-out,
+        -webkit-box-shadow 0.3s ease-in-out;
+    transition: -webkit-transform 0.3s ease-in-out,
+        -webkit-box-shadow 0.3s ease-in-out;
+    -o-transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out,
+        -webkit-transform 0.3s ease-in-out, -webkit-box-shadow 0.3s ease-in-out;
     position: relative;
     margin-top: 0.5rem; /* Bring button closer */
 }
 
 /* 🌟 Hover Effect */
 .cta:hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
     transform: scale(1.1);
+    -webkit-box-shadow: 0 6px 20px rgba(255, 215, 0, 0.9);
     box-shadow: 0 6px 20px rgba(255, 215, 0, 0.9);
 }
 
