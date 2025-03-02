@@ -1,0 +1,85 @@
+/* ✨ CTA Section */
+.cta-section {
+    margin-top: 8rem;
+    position: relative;
+    text-align: center;
+    padding: 3rem 0;
+    background: linear-gradient(
+        135deg,
+        #111,
+        #222
+    ); /* Dark gradient background */
+    overflow: hidden;
+}
+
+/* 🔥 Animated background glow */
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    width: 150%;
+    height: 300%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 215, 0, 0.3) 0%,
+        transparent 70%
+    );
+    transform: translate(-50%, 0);
+    animation: pulseGlow 4s infinite alternate ease-in-out;
+    z-index: 1;
+}
+
+/* 🏆 CTA Content */
+.cta-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* 🎰 CTA Title */
+.cta-content h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #ffd700; /* Gold */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+    margin-bottom: 1rem;
+}
+
+/* 💰 CTA Button - Make it glowing and clickable */
+.cta {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 0.75rem 2rem;
+    background: linear-gradient(45deg, #ffd700, #ffb800);
+    color: #111;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.6);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    position: relative;
+}
+
+/* 🌟 Button Glow Animation */
+.cta::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.4), transparent);
+    border-radius: 0.75rem;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* 🎆 Hover effect for CTA */
+.cta:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.9);
+}
+
+.cta:hover::before {
+    opacity: 1;
+}

@@ -1,0 +1,70 @@
+/* 🔄 Registration Steps Layout */
+.registration-steps {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2rem;
+    margin: 3rem auto;
+    width: 80%;
+}
+
+/* 🔄 Step Container */
+.step {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    max-width: 300px;
+    cursor: pointer;
+}
+
+/* 🟡 Animate when visible */
+.step.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 🌟 Glowing Hover Effect */
+.step:hover {
+    transform: scale(1.05);
+}
+
+/* 🖼️ Step Image */
+.step-image {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    transition: box-shadow 0.3s ease-in-out;
+}
+.step-image img {
+    width: 100%;
+}
+
+/* 🌟 Image Glow Effect */
+.step-image:hover {
+    box-shadow: 0 0 25px rgba(255, 215, 0, 1);
+}
+
+/* ✨ Step Titles */
+.step h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #ffd700, #ffa500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+}
+
+/* 📄 Step Description */
+.step p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 200, 0.9);
+    font-style: italic;
+    text-shadow: 1px 1px 3px rgba(255, 215, 0, 0.3);
+}

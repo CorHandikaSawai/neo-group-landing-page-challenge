@@ -1,0 +1,70 @@
+/* 🔄 Hero Slider */
+.hero-slider {
+    position: relative;
+    height: 45rem;
+    overflow: hidden;
+}
+
+/* 🔄 Carousel */
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* 🔄 Slides */
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+/* 🔄 Dark overlay to reduce brightness */
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* 🔄 Active slide - Make it visible */
+.slide.active {
+    opacity: 1;
+}
+
+/* 🔄 Text Styles */
+.slide h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8),
+        0 0 20px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 215, 0, 0.4);
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+}
+
+.slide p {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* 🔄 Ensure text and CTA are visible above overlay */
+.slide h1,
+.slide p,
+.slide .cta {
+    position: relative;
+    z-index: 2;
+}

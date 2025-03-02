@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Leon</title>
-        <link rel="stylesheet" href="styles.css" />
+        <link rel="stylesheet" href="./styles/main.css" />
         <script
             defer
             src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
@@ -17,7 +17,7 @@
                 <template x-for="(slide, index) in slides" :key="index">
                     <div
                         class="slide"
-                        x-show="currentSlide === index"
+                        :class="{ 'active': currentSlide === index }"
                         :style="'background-image: url(' + slide + ')'"
                     >
                         <h1>3000€ + 100 Rodadas Grátis na</h1>
@@ -25,20 +25,28 @@
                         <a
                             href="https://leon211.casino/registration"
                             class="cta"
-                            >REGISTE-SE</a
                         >
+                            REGISTE-SE
+                        </a>
                     </div>
                 </template>
             </div>
-            <button @click="currentSlide = (currentSlide + 1) % slides.length">
-                Next
-            </button>
+            <button @click="next()">Next</button>
         </section>
-
         <!-- 3-Step Registration Process -->
         <section class="registration-steps">
-            <div class="step">
-                <div><img src="register2.webp" /></div>
+            <div
+                class="step"
+                x-data="{ visible: false }"
+                x-init="setTimeout(() => visible = true, 500)"
+                x-bind:class="{ 'visible': visible }"
+            >
+                <div class="step-image">
+                    <img
+                        src="./assets/images/register2.webp"
+                        alt="Registe-se"
+                    />
+                </div>
                 <h2>1. Registe-se</h2>
                 <p>
                     Junte-se à família Leon, completando o nosso processo de
@@ -46,14 +54,31 @@
                 </p>
             </div>
 
-            <div class="step">
-                <div><img src="secure-deposite.webp" /></div>
+            <div
+                class="step"
+                x-data="{ visible: false }"
+                x-init="setTimeout(() => visible = true, 1000)"
+                x-bind:class="{ 'visible': visible }"
+            >
+                <div class="step-image">
+                    <img
+                        src="./assets/images/secure-deposite.webp"
+                        alt="Deposite"
+                    />
+                </div>
                 <h2>2. Deposite</h2>
                 <p>Processamentos rápidos e variados!</p>
             </div>
 
-            <div class="step">
-                <div><img src="step-3-jogue.webp" /></div>
+            <div
+                class="step"
+                x-data="{ visible: false }"
+                x-init="setTimeout(() => visible = true, 1500)"
+                x-bind:class="{ 'visible': visible }"
+            >
+                <div class="step-image">
+                    <img src="./assets/images/step-3-jogue.webp" alt="Jogue" />
+                </div>
                 <h2>3. Jogue</h2>
                 <p>A sua aventura pessoal na Leon começa aqui!</p>
             </div>
@@ -61,55 +86,65 @@
 
         <!-- Animated Cards Section -->
         <section class="animated-cards">
-            <div
-                class="card"
-                x-data="{ hovered: false }"
-                @mouseenter="hovered = true"
-                @mouseleave="hovered = false"
-            >
+            <div class="card">
                 <h3>Slots</h3>
                 <p>Mais de 4.500 jogos à sua escolha!</p>
             </div>
-            <div
-                class="card"
-                x-data="{ hovered: false }"
-                @mouseenter="hovered = true"
-                @mouseleave="hovered = false"
-            >
+
+            <div class="card">
                 <h3>Jogos ao vivo</h3>
                 <p>
                     Jogue num excelente casino online com nossos dealers ao
                     vivo!
                 </p>
             </div>
-            <div
-                class="card"
-                x-data="{ hovered: false }"
-                @mouseenter="hovered = true"
-                @mouseleave="hovered = false"
-            >
+
+            <div class="card">
                 <h3>Serviço de excelência</h3>
                 <p>Pagamentos rápidos, atendimento ao cliente 24h.</p>
             </div>
         </section>
-
         <!-- CTA Section -->
         <section class="cta-section">
-            <h2>Pronto para começar?</h2>
-            <a href="https://leon211.casino/registration" class="cta"
-                >REGISTE-SE AGORA</a
-            >
+            <div class="cta-content">
+                <h2>🎰 Pronto para começar?</h2>
+                <a href="https://leon211.casino/registration" class="cta"
+                    >REGISTE-SE AGORA</a
+                >
+            </div>
         </section>
     </body>
-
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.data('slider', () => ({
                 currentSlide: 0,
-                slides: ['roulette.jpg', 'roulette2.jpg', 'slot-machines.jpg'],
+                slides: [
+                    './assets/images/roulette.jpg',
+                    './assets/images/roulette2.jpg',
+                    './assets/images/slot-machines.jpg',
+                ],
                 next() {
+                    // Remove active class from previous slide
+                    document.querySelectorAll('.slide').forEach((el, index) => {
+                        if (index === this.currentSlide) {
+                            el.classList.remove('active');
+                        }
+                    });
+
+                    // Move to next slide
                     this.currentSlide =
                         (this.currentSlide + 1) % this.slides.length;
+
+                    // Add active class to new slide
+                    setTimeout(() => {
+                        document
+                            .querySelectorAll('.slide')
+                            .forEach((el, index) => {
+                                if (index === this.currentSlide) {
+                                    el.classList.add('active');
+                                }
+                            });
+                    }, 100);
                 },
                 init() {
                     setInterval(() => {

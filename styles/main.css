@@ -1,0 +1,23 @@
+/* Import Component Styles */
+@import url('./components/card.css');
+@import url('./components/cta.css');
+@import url('./components/registration.css');
+@import url('./components/slider.css');
+
+/* General Styles */
+:root {
+    --primary-color: #ff5722;
+    --dark-bg: #111;
+    --light-text: #fff;
+    --transition: 0.3s ease-in-out;
+    --base-font-size: 16px;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--dark-bg);
+    color: var(--light-text);
+    text-align: center;
+}
