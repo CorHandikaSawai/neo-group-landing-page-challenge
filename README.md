@@ -1,7 +1,7 @@
 # Leon Casino Landing Page
 
 ## Folder Structure
-
+```
 LEON-CASINO/
 │── assets/
 │ ├── images/ # All images and icons
@@ -14,7 +14,7 @@ LEON-CASINO/
 │ ├── main.css # Main stylesheet that imports component styles
 │── index.html # Main HTML file
 │── README.md # Project documentation
-
+```
 -   **Images** are inside `assets/images`, mostly using WebP for better compression.
 -   **CSS is modular**, separating concerns (e.g., `card.css`, `cta.css`) inside `styles/components/`.
 -   **If the project were bigger**, I would have used **HTML partials** for reusable components.
