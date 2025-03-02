@@ -19,6 +19,38 @@
     height: 100%;
 }
 
+/* Navigation buttons */
+.carousel .move-left,
+.carousel .move-right {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 2;
+    background-color: rgba(
+        0,
+        0,
+        0,
+        0.5
+    ); /* Optional: Background for visibility */
+    color: white; /* Optional: Button text color */
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: xx-large;
+}
+
+/* Left button */
+.carousel .move-left {
+    left: 10px;
+}
+
+/* Right button */
+.carousel .move-right {
+    right: 10px;
+}
+
 /* 🔄 Slides */
 .slide {
     position: absolute;
