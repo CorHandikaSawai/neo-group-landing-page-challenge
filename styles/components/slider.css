@@ -68,3 +68,45 @@
     position: relative;
     z-index: 2;
 }
+
+/* 📱 Responsive Design */
+@media (max-width: 1024px) {
+    /* ✅ Tablets (iPads) */
+    .hero-slider {
+        height: 35rem; /* Smaller height */
+    }
+
+    .slide h1 {
+        font-size: 3rem;
+    }
+
+    .slide p {
+        font-size: 1.3rem;
+    }
+
+    .slide .cta {
+        font-size: 1.3rem;
+        padding: 0.6rem 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* ✅ Mobile */
+    .hero-slider {
+        height: 25rem; /* Reduce height */
+    }
+
+    .slide h1 {
+        font-size: 2rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .slide p {
+        font-size: 1.2rem;
+    }
+
+    .slide .cta {
+        font-size: 1.2rem;
+        padding: 0.5rem 1.2rem;
+    }
+}

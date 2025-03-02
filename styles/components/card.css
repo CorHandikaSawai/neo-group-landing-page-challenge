@@ -37,7 +37,7 @@
 }
 
 .card:nth-child(3) {
-    background-image: url('./assets/images/excelent-service.webp');
+    background-image: url('/assets/images/excelent-service.webp');
 }
 
 /* ✨ Card Glow Effect */
@@ -75,4 +75,42 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.6); /* Dark overlay */
     z-index: 1;
+}
+
+/* 📱 ✅ Responsive Design - Tablets (iPads) */
+@media (max-width: 1024px) {
+    .animated-cards {
+        gap: 0.25rem; /* Less gap for tablets */
+    }
+    .card {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        height: 18rem;
+    }
+    .card h3 {
+        font-size: 1.5rem;
+    }
+    .card p {
+        font-size: 0.9rem;
+    }
+}
+
+/* 📱 ✅ Responsive Design - Mobile */
+@media (max-width: 768px) {
+    .animated-cards {
+        flex-direction: column; /* Stack vertically */
+        align-items: center; /* Center align */
+        gap: 2rem;
+    }
+    .card {
+        /* Make it take most of the screen width */
+        height: auto;
+        padding: 2rem;
+    }
+    .card h3 {
+        font-size: 1.6rem;
+    }
+    .card p {
+        font-size: 1rem;
+    }
 }
