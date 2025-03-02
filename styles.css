@@ -4,6 +4,11 @@
     --dark-bg: #111;
     --light-text: #fff;
     --transition: 0.3s ease-in-out;
+    --base-font-size: 16px; /* Default Root Font Size */
+}
+
+html {
+    font-size: 16px; /* Ensures 1rem = 16px */
 }
 
 body {
@@ -18,7 +23,7 @@ body {
 /* Hero Slider */
 .hero-slider {
     position: relative;
-    height: 400px;
+    height: 25rem; /* 400px -> 25rem */
     overflow: hidden;
 }
 
@@ -42,46 +47,128 @@ body {
     opacity: 0;
 }
 
+/* 🔄 Dark overlay to reduce brightness */
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Adjust transparency */
+}
+
 .slide[x-show='currentSlide === index'] {
     opacity: 1;
+}
+
+.slide h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #ffd700; /* Gold */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8),
+        0 0 20px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 215, 0, 0.4);
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+}
+
+.slide p {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.slide h1,
+.slide p,
+.slide .cta {
+    position: relative;
+    z-index: 2;
 }
 
 /* Registration Steps - Layout */
 .registration-steps {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    max-width: 600px;
-    margin: 50px auto;
+    justify-content: center;
+    margin: 3.125rem auto; /* 50px -> 3.125rem */
+    width: 80%;
+    gap: 2rem;
 }
 
 /* Step - Hidden by default */
 .step {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(1.875rem); /* 30px -> 1.875rem */
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     display: block;
+    flex: 1;
+}
+
+.step img {
+    border-radius: 50%;
+    width: 275px;
+    position: relative;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6)); /* Gold glow */
+    transition: transform 0.3s ease-in-out;
+    animation: glowPulse 2s infinite alternate;
+}
+
+.step img:hover {
+    transform: scale(1.1) rotate(5deg);
 }
 
 /* When visible, fade in and slide up */
-.step[x-show='visible'] {
+.step {
     opacity: 1;
     transform: translateY(0);
+    animation: bounceIn 0.6s ease-out;
+}
+
+/* Bounce In Keyframes */
+@keyframes bounceIn {
+    0% {
+        transform: translateX(-5rem) scale(0.9);
+        opacity: 0;
+    }
+    60% {
+        transform: translateX(0.5rem) scale(1.05);
+    }
+    80% {
+        transform: translateX(-0.2rem) scale(1);
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes glowPulse {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.9);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+    }
 }
 
 /* Cards */
 .animated-cards {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-top: 30px;
+    gap: 1.25rem; /* 20px -> 1.25rem */
+    margin-top: 1.875rem; /* 30px -> 1.875rem */
 }
 
 .card {
-    width: 200px;
-    padding: 20px;
+    width: 12.5rem; /* 200px -> 12.5rem */
+    padding: 1.25rem; /* 20px -> 1.25rem */
     background: #222;
-    border-radius: 10px;
+    border-radius: 0.625rem; /* 10px -> 0.625rem */
     transition: transform var(--transition);
 }
 
@@ -91,20 +178,25 @@ body {
 
 /* CTA */
 .cta-section {
-    margin-top: 50px;
+    margin-top: 3.125rem; /* 50px -> 3.125rem */
 }
 
+/* CTA Button - Make it glowing and more clickable */
 .cta {
     display: inline-block;
-    padding: 12px 24px;
-    background: var(--primary-color);
-    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 0.75rem 2rem;
+    background: linear-gradient(45deg, #ffd700, #ffb800);
+    color: #111;
     text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background var(--transition);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.6);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
+/* Hover effect for CTA */
 .cta:hover {
-    background: #ff3b00;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.8);
 }

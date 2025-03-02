@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Casino Landing Page</title>
+        <title>Leon</title>
         <link rel="stylesheet" href="styles.css" />
         <script
             defer
@@ -20,7 +20,7 @@
                         x-show="currentSlide === index"
                         :style="'background-image: url(' + slide + ')'"
                     >
-                        <h1>3000€ + 100 Free Spins</h1>
+                        <h1>3000€ + 100 Rodadas Grátis na</h1>
                         <p>No Casino e Casino ao vivo</p>
                         <a
                             href="https://leon211.casino/registration"
@@ -37,12 +37,8 @@
 
         <!-- 3-Step Registration Process -->
         <section class="registration-steps">
-            <div
-                class="step"
-                x-data="{ visible: false }"
-                x-init="setTimeout(() => visible = true, 500)"
-                x-show="visible"
-            >
+            <div class="step">
+                <div><img src="register2.webp" /></div>
                 <h2>1. Registe-se</h2>
                 <p>
                     Junte-se à família Leon, completando o nosso processo de
@@ -50,22 +46,14 @@
                 </p>
             </div>
 
-            <div
-                class="step"
-                x-data="{ visible: false }"
-                x-init="setTimeout(() => visible = true, 1000)"
-                x-show="visible"
-            >
+            <div class="step">
+                <div><img src="secure-deposite.webp" /></div>
                 <h2>2. Deposite</h2>
                 <p>Processamentos rápidos e variados!</p>
             </div>
 
-            <div
-                class="step"
-                x-data="{ visible: false }"
-                x-init="setTimeout(() => visible = true, 1500)"
-                x-show="visible"
-            >
+            <div class="step">
+                <div><img src="step-3-jogue.webp" /></div>
                 <h2>3. Jogue</h2>
                 <p>A sua aventura pessoal na Leon começa aqui!</p>
             </div>
@@ -118,11 +106,7 @@
         document.addEventListener('alpine:init', () => {
             Alpine.data('slider', () => ({
                 currentSlide: 0,
-                slides: [
-                    '/assets/Games/GatesOfOlympus/Background/Freegame_BG.png',
-                    '/assets/Games/SweetBonanza1000/Background/Freegame_BG_5000X1998.png',
-                    '/assets/Games/WolfGoldUltimate/Background/Freegame_BG_5000X1998.png',
-                ],
+                slides: ['roulette.jpg', 'roulette2.jpg', 'slot-machines.jpg'],
                 next() {
                     this.currentSlide =
                         (this.currentSlide + 1) % this.slides.length;
